@@ -8,3 +8,13 @@ void vec_init(struct vec *vec, dtor_t dtor) {
 	vec->cnt = 0;
 	vec->dtor = dtor;
 }
+
+int vec_set_cap(struct vec *vec, size_t cap) {
+	if(cap < vec->cnt) {
+		fprintf(stderr, "Failed to set vector capacity to %lu, which is smaller than the element count [%lu].\n", cap, vec->cnt);
+		return -1;
+	}
+	vec->elms = realloc(vec->elms, sizeof(void*)*cap);
+	vec->cap = cap;
+	return 0;
+}
