@@ -53,3 +53,9 @@ Add an element at the end of a vector.
 Memory space of the element to be added should be dynamically allocated.
 
 If the vector is full, it is automatically expanded. Expand factor `VCTR_EXPN_FAC` can be modified in source file *vec.c*.
+
+```
+void vec_fnl(struct vec *vec);
+```
+
+Thoroughly clear a vector, including all its elements.
