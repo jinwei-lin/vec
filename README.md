@@ -34,7 +34,7 @@ void vec_init(struct vec *vec, dtor_t dtor);
 
 Initialize a vector.
 
-Initial capacity `VCTR_INIT_CAP` of a vector can be modified in source file *vec.c*.
+Initial capacity `VEC_INIT_CAP` of a vector can be modified in source file *vec.c*.
 
 ```
 int vec_set_cap(struct vec *vec, size_t cap);
@@ -52,7 +52,7 @@ Add an element at the end of a vector.
 
 Memory space of the element to be added should be dynamically allocated.
 
-If the vector is full, it is automatically expanded. Expand factor `VCTR_EXPN_FAC` can be modified in source file *vec.c*.
+If the vector is full, it is automatically expanded. Expand factor `VEC_EXPN_FAC` can be modified in source file *vec.c*.
 
 ```
 void vec_fnl(struct vec *vec);
