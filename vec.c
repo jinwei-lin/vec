@@ -1,6 +1,7 @@
 #include "vec.h"
 
-const size_t VEC_INIT_CAP = 10;
+const size_t VEC_INIT_CAP = 10,
+             VEC_EXPN_FAC = 2;
 
 void vec_init(struct vec *vec, dtor_t dtor) {
 	vec->elms = malloc(sizeof(void*)*VEC_INIT_CAP);
@@ -17,4 +18,13 @@ int vec_set_cap(struct vec *vec, size_t cap) {
 	vec->elms = realloc(vec->elms, sizeof(void*)*cap);
 	vec->cap = cap;
 	return 0;
+}
+
+void vec_psh_bk(struct vec *vec, void *elm) {
+	size_t cnt = vec->cnt;
+
+	if(cnt == vec->cap)
+		vec_set_cap(vec, (vec->cap)*VEC_EXPN_FAC);
+	vec->elms[cnt] = elm;
+	vec->cnt = cnt + 1;
 }
